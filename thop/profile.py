@@ -1,5 +1,5 @@
 import logging
-
+from typing import List, Tuple
 import torch
 import torch.nn as nn
 from torch.nn.modules.conv import _ConvNd
@@ -39,7 +39,7 @@ register_hooks = {
 }
 
 
-def profile(model, input_size, custom_ops={}, device="cpu"):
+def profile(model: nn.Module, input_sizes: List[Tuple[int]], custom_ops={}, device="cuda"):
     handler_collection = []
 
     def add_hooks(m):
@@ -63,7 +63,7 @@ def profile(model, input_size, custom_ops={}, device="cpu"):
             print("Not implemented for ", m)
 
         if fn is not None:
-            print("Register FLOP counter for module %s" % str(m))
+            # print("Register FLOP counter for module %s" % str(m))
             handler = m.register_forward_hook(fn)
             handler_collection.append(handler)
 
@@ -73,9 +73,9 @@ def profile(model, input_size, custom_ops={}, device="cpu"):
     model.eval().to(device)
     model.apply(add_hooks)
 
-    x = torch.zeros(input_size).to(device)
+    xs = [torch.zeros(input_size).to(device) for input_size in input_sizes]
     with torch.no_grad():
-        model(x)
+        model(*xs)
 
     total_ops = 0
     total_params = 0

@@ -1,5 +1,5 @@
 import argparse
-
+from functools import reduce
 import torch
 import torch.nn as nn
 
@@ -11,7 +11,8 @@ def count_convNd(m, x, y):
     cin = m.in_channels
     # batch_size = x.size(0)
 
-    kernel_ops = m.weight.size()[2:].numel()
+    kernel_ops = m.weight.size()[2:]
+    kernel_ops = reduce(lambda x, y: x*y, kernel_ops)
     bias_ops = 1 if m.bias is not None else 0
     ops_per_element = kernel_ops + bias_ops
     output_elements = y.nelement()
