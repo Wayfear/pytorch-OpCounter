@@ -1,5 +1,9 @@
 # THOP: PyTorch-OpCounter
 
+## Source
+* Folk from: [THOP: PyTorch-OpCounter](https://github.com/Lyken17/pytorch-OpCounter)
+* Fix some bug and support multiple input
+
 ## How to install 
 * Using GitHub (always latest)
     
@@ -7,14 +11,14 @@
     
 ## How to use 
 * Suppport multiple input
-* core api
+* Core API
     ```
     def profile(model: nn.Module, input_sizes: List[Tuple[int]],
                 custom_ops: Dict[nn.Module, Callable]={}, device: str="cuda")-> Tuple[int, int]:
         ...
         return flops, params
     ```
-* Basic usage 
+* Basic usage
     ```python
     from torchvision.models import resnet50
     from thop import profile
