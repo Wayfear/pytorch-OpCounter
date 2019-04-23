@@ -7,6 +7,13 @@
     
 ## How to use 
 * Suppport multiple input
+* core api
+    ```
+    def profile(model: nn.Module, input_sizes: List[Tuple[int]],
+                custom_ops: Dict[nn.Module, Callable]={}, device: str="cuda")-> Tuple[int, int]:
+        ...
+        return flops, params
+    ```
 * Basic usage 
     ```python
     from torchvision.models import resnet50

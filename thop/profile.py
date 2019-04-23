@@ -1,5 +1,5 @@
 import logging
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Callable
 import torch
 import torch.nn as nn
 from torch.nn.modules.conv import _ConvNd
@@ -39,7 +39,8 @@ register_hooks = {
 }
 
 
-def profile(model: nn.Module, input_sizes: List[Tuple[int]], custom_ops={}, device="cuda"):
+def profile(model: nn.Module, input_sizes: List[Tuple[int]],
+            custom_ops: Dict[nn.Module, Callable]={}, device: str="cuda")-> Tuple[int, int]:
     handler_collection = []
 
     def add_hooks(m):
