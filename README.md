@@ -7,7 +7,7 @@
 ## How to install 
 * Using GitHub (always latest)
     
-    ```
+    ```bash
     pip install --upgrade git+http://gitlab.bj.sensetime.com/kanxuan/THOP_PyTorchOpCounter.git
     ```
     
@@ -15,7 +15,7 @@
 
 * Core API
 
-    ```
+    ```python
     def profile(model: nn.Module, input_sizes: List[Tuple[int]],
                 custom_ops: Dict[nn.Module, Callable]={}, device: str="cuda")-> Tuple[int, int]:
         ...
