@@ -10,7 +10,7 @@
     `pip install --upgrade git+https://github.com/Wayfear/pytorch-OpCounter.git`
     
 ## How to use 
-* Suppport multiple input
+
 * Core API
     ```
     def profile(model: nn.Module, input_sizes: List[Tuple[int]],
