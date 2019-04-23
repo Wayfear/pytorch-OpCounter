@@ -7,7 +7,9 @@
 ## How to install 
 * Using GitHub (always latest)
     
-    `pip install --upgrade git+http://gitlab.bj.sensetime.com/kanxuan/THOP_PyTorchOpCounter.git`
+    ```
+    pip install --upgrade git+http://gitlab.bj.sensetime.com/kanxuan/THOP_PyTorchOpCounter.git
+    ```
     
 ## How to use 
 
