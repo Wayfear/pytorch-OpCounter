@@ -7,12 +7,14 @@
 ## How to install 
 * Using GitHub (always latest)
     
-    `pip install --upgrade git+https://github.com/Wayfear/pytorch-OpCounter.git`
+    ```bash
+    pip install --upgrade git+https://github.com/Wayfear/pytorch-OpCounter.git
+    ```
     
 ## How to use 
 
 * Core API
-    ```
+    ```python
     def profile(model: nn.Module, input_sizes: List[Tuple[int]],
                 custom_ops: Dict[nn.Module, Callable]={}, device: str="cuda")-> Tuple[int, int]:
         ...
