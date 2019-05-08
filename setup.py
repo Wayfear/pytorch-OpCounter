@@ -10,7 +10,6 @@ readme = open('README.md').read()
 VERSION = '0.0.22'
 
 requirements = [
-    'torch',
 ]
 
 setup(
