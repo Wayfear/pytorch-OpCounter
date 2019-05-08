@@ -8,7 +8,9 @@
 * Using GitHub (always latest)
     
     ```bash
-    pip install --upgrade git+https://github.com/Wayfear/pytorch-OpCounter.git
+
+    pip install --upgrade git+http://gitlab.bj.sensetime.com/kanxuan/THOP_PyTorchOpCounter.git
+
     ```
     
 ## How to use 
@@ -20,6 +22,7 @@
         ...
         return flops, params
     ```
+
 * Basic usage
     ```python
     from torchvision.models import resnet50
