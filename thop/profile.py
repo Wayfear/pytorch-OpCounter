@@ -40,7 +40,7 @@ register_hooks = {
 
 
 def profile(model: nn.Module, input_sizes: List[Tuple[int]],
-            custom_ops: Dict[nn.Module, Callable]={})-> Tuple[int, int]:
+            custom_ops: Dict[nn.Module, Callable]={}, device: str="cuda")-> Tuple[int, int]:
     handler_collection = []
 
     def add_hooks(m):
@@ -68,11 +68,13 @@ def profile(model: nn.Module, input_sizes: List[Tuple[int]],
             handler = m.register_forward_hook(fn)
             handler_collection.append(handler)
 
-    # original_device = model.parameters().__next__().device
+    original_device = model.parameters().__next__().device
     training = model.training
 
     # model.eval().to(device)
     model.eval()
+    if hasattr(model, 'to'):
+        model.to(device)
     model.apply(add_hooks)
 
     xs = [torch.zeros(input_size).to(device) for input_size in input_sizes]
