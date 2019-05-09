@@ -92,7 +92,10 @@ def profile(model: nn.Module, input_sizes: List[Tuple[int]],
     total_ops = total_ops.item()
     total_params = total_params.item()
 
-    model.train(training).to(original_device)
+    model.train(training)
+    if hasattr(model, 'to'):
+        model.to(original_device)
+        
     for handler in handler_collection:
         handler.remove()
 
