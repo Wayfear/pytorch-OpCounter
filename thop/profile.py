@@ -60,8 +60,8 @@ def profile(model: nn.Module, input_sizes: List[Tuple[int]],
             fn = custom_ops[m_type]
         elif m_type in register_hooks:
             fn = register_hooks[m_type]
-        else:
-            print("Not implemented for ", m)
+        # else:
+        #     print("Not implemented for ", m)
 
         if fn is not None:
             # print("Register FLOP counter for module %s" % str(m))
